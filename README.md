@@ -1,100 +1,54 @@
-# AngularJS User Registration with Flask Backend
+# User Registration with Validation
 
-This project is a simple user registration system using **AngularJS** for the frontend and **Flask** for the backend API.
+A simple user registration system using AngularJS (frontend), Node.js + Express (backend), and MySQL (database).
 
----
+##  Features
 
-## Features
+- AngularJS template-driven form
+- Real-time validation
+- Email pattern check
+- Password and confirm password match
+- API call to backend with validation
+- User data stored in MySQL
 
-- User registration form with fields:
-  - Name
-  - Email
-  - Password
-  - Confirm Password
-- Form validation including:
-  - Required fields
-  - Email pattern validation
-  - Password confirmation match
-- Submit button disabled until form is valid
-- Backend API built with Flask to handle registration data
-- CORS enabled for frontend-backend communication
-- List of registered users accessible via API endpoint
+## Technologies
 
----
+- AngularJS 1.x
+- Node.js + Express
+- MySQL
+- HTML/CSS
 
-## Project Structure
+##  Setup Guide
 
-project-folder/
-├── backend/
-│ └── app.py # Flask backend server
-├── frontend/
-│ ├── index.html # AngularJS frontend
-│ └── app/
-│ └── app.js # AngularJS controller
-├── README.md # Project documentation
-└── .gitignore # Git ignore file (optional)
+###  Backend
 
----
+1. Install dependencies:
+```bash
+cd backend
+npm install
+•	onfigure MySQL database:
+o	Log into MySQL and run:
+CREATE DATABASE userdb;
 
-## Validation Details
+USE userdb;
 
-- **Required fields:** AngularJS `required` directive ensures no empty inputs.
-- **Email validation:** Uses AngularJS built-in email validation pattern.
-- **Password confirmation:** Custom check in AngularJS controller to verify if `password === confirmPassword`.
-- **Submit button disabled:** Button remains disabled (`ng-disabled`) until the form is valid and passwords match.
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+•	Update database credentials in server.js if necessary.
+•	Start the backend server:
+node server.js
+Server runs on http://localhost:3000
+3. Frontend Setup
+•	Navigate to the frontend folder.
+•	Serve files using any static server (e.g., Live Server in VS Code) or open index.html in a browser.
+## Setup Guide
 
----
-
-## Setup Instructions
-
-### Backend (Flask)
-
-1. Navigate to backend folder:
-
-   ```bash
-   cd backend
-Install dependencies:
-
-pip install flask flask-cors
-
-
-Run the Flask server:
-
-python app.py
-
-
-Backend runs at: http://127.0.0.1:5000
-
-Frontend (AngularJS)
-
-Open frontend/index.html in your browser.
-
-Fill the registration form ensuring all validations pass.
-
-Click Register to send data to backend.
-
-API Endpoints
-
-POST /register — Accepts user registration data (name, email, password).
-
-GET /users — Returns list of registered users (in-memory).
-
-Notes
-
-Data is stored temporarily in-memory; restarting the Flask server clears registered users.
-
-For production, implement persistent database storage.
-
-You can enhance validation and UI using AngularJS or other frameworks.
-
-License
-
-This project is open source and free to use.
-
-Feel free to ask questions or contribute!
-
-
----
-
-Would you like me to help you add a `.gitignore` too?
+### 1. Clone the repository
+```bash
+git clone https://github.com/Darice1234/project1
+cd project1
 
