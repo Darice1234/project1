@@ -26,7 +26,7 @@ A simple user registration system using AngularJS (frontend), Node.js + Express 
 ```bash
 cd backend
 npm install
-•	onfigure MySQL database:
+•	configure MySQL database:
 o	Log into MySQL and run:
 CREATE DATABASE userdb;
 
