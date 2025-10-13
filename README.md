@@ -51,4 +51,3 @@ Server runs on http://localhost:3000
 ```bash
 git clone https://github.com/Darice1234/project1
 cd project1
-
