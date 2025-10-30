@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controller.js"></script>
+
+  <!-- ✅ Inline CSS Styling -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    span {
+      color: #d9534f;
+      font-size: 12px;
+      display: block;
+      margin-top: -8px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #007BFF;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    p {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    p[ng-if="successMessage"] {
+      color: green;
+    }
+
+    p[ng-if="errorMessage"] {
+      color: red;
+    }
+  </style>
+</head>
+<body ng-controller="RegisterController">
+
+  <form name="regForm" ng-submit="register()" novalidate>
+    <h2>User Registration</h2>
+
+    <label>Name:</label>
+    <input type="text" ng-model="user.name" name="name" required />
+    <span ng-show="regForm.$submitted && regForm.name.$error.required">Name is required</span>
+
+    <label>Email:</label>
+    <input type="email" ng-model="user.email" name="email" required />
+    <span ng-show="regForm.$submitted && regForm.email.$error.required">Email is required</span>
+    <span ng-show="regForm.email.$error.email">Invalid email format</span>
+
+    <label>Password:</label>
+    <input type="password" ng-model="user.password" name="password" required ng-minlength="6" />
+    <span ng-show="regForm.$submitted && regForm.password.$error.required">Password is required</span>
+    <span ng-show="regForm.password.$error.minlength">Password must be at least 6 characters</span>
+
+    <button type="submit">Register</button>
+
+    <p ng-if="successMessage">{{ successMessage }}</p>
+    <p ng-if="errorMessage">{{ errorMessage }}</p>
+  </form>
+
+</body>
+</html>
